@@ -3,49 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Test Share</title>
+    <title>แชร์ Quick Link</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f9f9f9; }
-        button { padding: 20px; font-size: 20px; background: #06c755; color: white; border: none; border-radius: 10px; width: 80%; }
+        body { font-family: 'Prompt', sans-serif; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .btn-share { background-color: #06c755; color: white; border: none; padding: 18px 30px; font-size: 20px; border-radius: 12px; cursor: pointer; font-weight: bold; width: 85%; max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.1s; display: none; }
+        .btn-share:active { transform: scale(0.96); }
     </style>
 </head>
 <body>
 
-    <button id="btnShare">ทดสอบส่งข้อความธรรมดา</button>
+    <button id="btnShare" class="btn-share">แชร์เมนู Quick Link ปข.3</button>
 
     <script>
-        // ใช้ LIFF ID ของคุณ
-        liff.init({ liffId: "2011764737-4atHAAHK" }).then(() => {
-            if (!liff.isLoggedIn()) {
+        const LIFF_ID = "2011764737-4atHAAHK"; 
+
+        liff.init({ liffId: LIFF_ID }).then(() => {
+            if (liff.isLoggedIn()) {
+                document.getElementById("btnShare").style.display = "block";
+            } else {
                 liff.login();
             }
         }).catch((err) => {
-            alert("Init Error: " + JSON.stringify(err));
+            alert("ระบบขัดข้อง: " + JSON.stringify(err));
         });
 
         document.getElementById("btnShare").addEventListener("click", () => {
-            // เช็กว่าปุ่มโดนคลิกจริงๆ
-            alert("กำลังเปิดหน้าเลือกกลุ่ม/เพื่อน..."); 
-            
             if (liff.isApiAvailable('shareTargetPicker')) {
                 liff.shareTargetPicker([
                     {
-                        "type": "text",
-                        "text": "✅ ทดสอบระบบ: ฟีเจอร์ Share Target Picker ใช้งานได้ปกติครับ!"
+                        "type": "flex",
+                        "altText": "📌 Quick Link ปข.3",
+                        "contents": {
+                          "type": "bubble",
+                          "size": "mega",
+                          "header": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "backgroundColor": "#1e3a8a",
+                            "paddingAll": "20px",
+                            "contents": [
+                              { "type": "text", "text": "SHORTCUTS", "color": "#93c5fd", "size": "xs", "weight": "bold" },
+                              { "type": "text", "text": "Quick Link ปข.3", "color": "#ffffff", "size": "xl", "weight": "bold", "margin": "md" },
+                              { "type": "text", "text": "รวมลิงก์ระบบงาน (ตล.)", "color": "#cbd5e1", "size": "sm", "margin": "sm" }
+                            ]
+                          },
+                          "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "paddingAll": "20px",
+                            "contents": [
+                              { "type": "button", "style": "primary", "color": "#2563eb", "height": "sm", "action": { "type": "uri", "label": "📊 รายได้ ปข.3", "uri": "https://datastudio.google.com/reporting/e8f27de9-2a6f-4826-968b-5832dd277446" } },
+                              { "type": "button", "style": "primary", "color": "#ef4444", "height": "sm", "margin": "md", "action": { "type": "uri", "label": "🌐 ระบบ AICIP", "uri": "https://aicip-p3-app.onrender.com/" } },
+                              { "type": "button", "style": "primary", "color": "#f59e0b", "height": "sm", "margin": "md", "action": { "type": "uri", "label": "⏱️ SLA จ่ายสลากฯ", "uri": "https://www.appsheet.com/start/68fcb5f9-b795-4057-bc52-273a7dd863d0" } },
+                              { "type": "button", "style": "primary", "color": "#10b981", "height": "sm", "margin": "md", "action": { "type": "uri", "label": "🗳️ ภารกิจเลือกตั้ง", "uri": "https://www.google.com" } },
+                              { "type": "button", "style": "primary", "color": "#8b5cf6", "height": "sm", "margin": "md", "action": { "type": "uri", "label": "✈️ ส่งต่างประเทศ", "uri": "https://international.thailandpost.com/" } }
+                            ]
+                          }
+                        }
                     }
                 ]).then((res) => {
                     if (res) {
-                        alert("ส่งสำเร็จ!");
-                        liff.closeWindow();
-                    } else {
-                        alert("ยกเลิกการส่ง");
+                        liff.closeWindow(); 
                     }
                 }).catch((err) => {
-                    alert("Share Error: " + JSON.stringify(err));
+                    alert("แชร์ไม่สำเร็จ: " + JSON.stringify(err));
                 });
             } else {
-                alert("แอป LINE ไม่รองรับ ShareTargetPicker");
+                alert("อุปกรณ์ของคุณไม่รองรับการแชร์ครับ");
             }
         });
     </script>
