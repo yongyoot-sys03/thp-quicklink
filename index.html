@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>แชร์ Flex Message</title>
-    <!-- โหลด LINE LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body {
@@ -17,7 +16,7 @@
             height: 100vh;
         }
         .btn-share {
-            background-color: #06c755; /* สีเขียวแบบ LINE */
+            background-color: #06c755;
             color: #ffffff;
             border: none;
             padding: 16px 32px;
@@ -25,7 +24,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            display: none; /* ซ่อนไว้ก่อนจนกว่าจะโหลด LIFF เสร็จ */
+            display: none;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .btn-share:active {
@@ -35,12 +34,10 @@
 </head>
 <body>
 
-    <!-- ปุ่มเลือกกลุ่มเพื่อส่งการ์ด -->
     <button id="btnShare" class="btn-share">เลือกกลุ่มเพื่อส่งการ์ด</button>
 
     <script>
-        // 📌 ระบุ LIFF ID ของคุณที่ได้จากหน้า LINE Developers
-        const LIFF_ID = "2011764737-4atHAAHK"; // ผมดึงมาจากภาพก่อนหน้าของคุณครับ
+        const LIFF_ID = "2011764737-4atHAAHK"; 
 
         async function initializeLiff() {
             try {
@@ -51,11 +48,10 @@
                     liff.login();
                 }
             } catch (err) {
-                console.error("LIFF Initialization failed", err);
+                alert("ระบบโหลดล้มเหลว: " + JSON.stringify(err));
             }
         }
 
-        // เมื่อกดปุ่มสีเขียว
         document.getElementById("btnShare").addEventListener("click", async () => {
             if (liff.isApiAvailable('shareTargetPicker')) {
                 try {
@@ -63,11 +59,7 @@
                         {
                             "type": "flex",
                             "altText": "📌 Quick Link ปข.3 (ตล.)",
-                            "contents": 
-                            // ==========================================
-                            // 📌 วาง JSON ของ Flex Message สีสันสดใสตรงนี้
-                            // ==========================================
-                            {
+                            "contents": {
                               "type": "bubble",
                               "size": "mega",
                               "header": {
@@ -92,7 +84,7 @@
                                   },
                                   {
                                     "type": "button",
-                                    "action": { "type": "uri", "label": "🌐 ระบบ AICIPReg03", "uri": "https://aicip-p3-app.onrender.com/" },
+                                    "action": { "type": "uri", "label": "🌐 ระบบ AICIP", "uri": "https://aicip-p3-app.onrender.com/" },
                                     "style": "primary", "color": "#ef4444", "height": "sm", "margin": "md"
                                   },
                                   {
@@ -107,30 +99,28 @@
                                   },
                                   {
                                     "type": "button",
-                                    "action": { "type": "uri", "label": "✈️ ส่งของไปต่างประเทศ", "uri": "https://international.thailandpost.com/" },
+                                    "action": { "type": "uri", "label": "✈️ ส่งต่างประเทศ", "uri": "https://international.thailandpost.com/" },
                                     "style": "primary", "color": "#8b5cf6", "height": "sm", "margin": "md"
                                   }
                                 ],
                                 "paddingAll": "25px"
                               }
                             }
-                            // ==========================================
                         }
                     ]);
                     
                     if (result) {
-                        // ส่งเสร็จแล้วให้ปิดหน้าต่าง LIFF อัตโนมัติ
                         liff.closeWindow(); 
                     }
                 } catch (error) {
-                    console.error("Error sending message", error);
+                    // หากมีข้อผิดพลาด จะเด้ง Alert บอกหน้าจอทันที
+                    alert("ส่งข้อความไม่สำเร็จ สาเหตุ: " + JSON.stringify(error));
                 }
             } else {
-                alert("กรุณาเปิดการใช้งาน Share Target Picker ใน LINE Developers");
+                alert("แอป LINE ของคุณยังไม่รองรับการแชร์ หรือยังไม่ได้เปิดสิทธิ์ Share Target Picker");
             }
         });
 
-        // เริ่มต้นการทำงาน
         initializeLiff();
     </script>
 </body>
