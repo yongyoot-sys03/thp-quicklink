@@ -3,125 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>แชร์ Flex Message</title>
+    <title>Test Share</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
-        body {
-            font-family: 'Prompt', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .btn-share {
-            background-color: #06c755;
-            color: #ffffff;
-            border: none;
-            padding: 16px 32px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            display: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .btn-share:active {
-            transform: scale(0.95);
-        }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f9f9f9; }
+        button { padding: 20px; font-size: 20px; background: #06c755; color: white; border: none; border-radius: 10px; width: 80%; }
     </style>
 </head>
 <body>
 
-    <button id="btnShare" class="btn-share">เลือกกลุ่มเพื่อส่งการ์ด</button>
+    <button id="btnShare">ทดสอบส่งข้อความธรรมดา</button>
 
     <script>
-        const LIFF_ID = "2011764737-4atHAAHK"; 
-
-        async function initializeLiff() {
-            try {
-                await liff.init({ liffId: LIFF_ID });
-                if (liff.isLoggedIn()) {
-                    document.getElementById("btnShare").style.display = "block";
-                } else {
-                    liff.login();
-                }
-            } catch (err) {
-                alert("ระบบโหลดล้มเหลว: " + JSON.stringify(err));
+        // ใช้ LIFF ID ของคุณ
+        liff.init({ liffId: "2011764737-4atHAAHK" }).then(() => {
+            if (!liff.isLoggedIn()) {
+                liff.login();
             }
-        }
-
-        document.getElementById("btnShare").addEventListener("click", async () => {
-            if (liff.isApiAvailable('shareTargetPicker')) {
-                try {
-                    const result = await liff.shareTargetPicker([
-                        {
-                            "type": "flex",
-                            "altText": "📌 Quick Link ปข.3 (ตล.)",
-                            "contents": {
-                              "type": "bubble",
-                              "size": "mega",
-                              "header": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                  { "type": "text", "text": "📌 SHORTCUTS", "color": "#93c5fd", "size": "xs", "weight": "bold", "tracking": "widest" },
-                                  { "type": "text", "text": "Quick Link ปข.3", "color": "#ffffff", "size": "xxl", "weight": "bold", "margin": "md" },
-                                  { "type": "text", "text": "ส่วนการตลาดและบริการลูกค้า", "color": "#e2e8f0", "size": "sm", "margin": "sm" }
-                                ],
-                                "backgroundColor": "#1e3a8a",
-                                "paddingAll": "25px"
-                              },
-                              "body": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                  {
-                                    "type": "button",
-                                    "action": { "type": "uri", "label": "📊 รายได้ ปข.3", "uri": "https://datastudio.google.com/reporting/e8f27de9-2a6f-4826-968b-5832dd277446" },
-                                    "style": "primary", "color": "#2563eb", "height": "sm", "margin": "sm"
-                                  },
-                                  {
-                                    "type": "button",
-                                    "action": { "type": "uri", "label": "🌐 ระบบ AICIP", "uri": "https://aicip-p3-app.onrender.com/" },
-                                    "style": "primary", "color": "#ef4444", "height": "sm", "margin": "md"
-                                  },
-                                  {
-                                    "type": "button",
-                                    "action": { "type": "uri", "label": "⏱️ SLA จ่ายสลากฯ", "uri": "https://www.appsheet.com/start/68fcb5f9-b795-4057-bc52-273a7dd863d0" },
-                                    "style": "primary", "color": "#f59e0b", "height": "sm", "margin": "md"
-                                  },
-                                  {
-                                    "type": "button",
-                                    "action": { "type": "uri", "label": "🗳️ ภารกิจเลือกตั้ง", "uri": "https://www.google.com" },
-                                    "style": "primary", "color": "#10b981", "height": "sm", "margin": "md"
-                                  },
-                                  {
-                                    "type": "button",
-                                    "action": { "type": "uri", "label": "✈️ ส่งต่างประเทศ", "uri": "https://international.thailandpost.com/" },
-                                    "style": "primary", "color": "#8b5cf6", "height": "sm", "margin": "md"
-                                  }
-                                ],
-                                "paddingAll": "25px"
-                              }
-                            }
-                        }
-                    ]);
-                    
-                    if (result) {
-                        liff.closeWindow(); 
-                    }
-                } catch (error) {
-                    // หากมีข้อผิดพลาด จะเด้ง Alert บอกหน้าจอทันที
-                    alert("ส่งข้อความไม่สำเร็จ สาเหตุ: " + JSON.stringify(error));
-                }
-            } else {
-                alert("แอป LINE ของคุณยังไม่รองรับการแชร์ หรือยังไม่ได้เปิดสิทธิ์ Share Target Picker");
-            }
+        }).catch((err) => {
+            alert("Init Error: " + JSON.stringify(err));
         });
 
-        initializeLiff();
+        document.getElementById("btnShare").addEventListener("click", () => {
+            // เช็กว่าปุ่มโดนคลิกจริงๆ
+            alert("กำลังเปิดหน้าเลือกกลุ่ม/เพื่อน..."); 
+            
+            if (liff.isApiAvailable('shareTargetPicker')) {
+                liff.shareTargetPicker([
+                    {
+                        "type": "text",
+                        "text": "✅ ทดสอบระบบ: ฟีเจอร์ Share Target Picker ใช้งานได้ปกติครับ!"
+                    }
+                ]).then((res) => {
+                    if (res) {
+                        alert("ส่งสำเร็จ!");
+                        liff.closeWindow();
+                    } else {
+                        alert("ยกเลิกการส่ง");
+                    }
+                }).catch((err) => {
+                    alert("Share Error: " + JSON.stringify(err));
+                });
+            } else {
+                alert("แอป LINE ไม่รองรับ ShareTargetPicker");
+            }
+        });
     </script>
 </body>
 </html>
