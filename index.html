@@ -43,7 +43,7 @@
     <script>
         const LIFF_ID = "2011764737-4atHAAHK"; 
 
-        // ฟังก์ชันช่วยเติมพารามิเตอร์บังคับเปิดใน External Browser
+        // ฟังก์ชันช่วยเติมพารามิเตอร์บังคับเปิดใน External Browser (Chrome/Safari)
         function toExternalUrl(url) {
             if (url.includes('?')) {
                 return url + '&openExternalBrowser=1';
@@ -94,73 +94,8 @@
                             "paddingAll": "16px",
                             "backgroundColor": "#f8fafc",
                             "contents": [
-                              /* Section 1: ระบบงานปฏิบัติการ */
-                              { "type": "text", "text": "💻 ระบบงานปฏิบัติการ", "color": "#475569", "size": "xs", "weight": "bold", "margin": "xs" },
-                              {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "spacing": "sm",
-                                "contents": [
-                                  {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "backgroundColor": "#3b82f6",
-                                    "cornerRadius": "lg",
-                                    "paddingAll": "12px",
-                                    "action": { "type": "uri", "label": "AITHPREG03", "uri": toExternalUrl("https://yongyoot14032528-aicipreg03.hf.space") },
-                                    "contents": [
-                                      { "type": "text", "text": "🌐", "size": "lg", "align": "center" },
-                                      { "type": "text", "text": "AICIPREG03", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
-                                    ]
-                                  },
-                                  {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "backgroundColor": "#4f46e5",
-                                    "cornerRadius": "lg",
-                                    "paddingAll": "12px",
-                                    "action": { "type": "uri", "label": "OnePriceOS", "uri": toExternalUrl("https://yongyoot14032528-onepriceos.hf.space") },
-                                    "contents": [
-                                      { "type": "text", "text": "📦", "size": "lg", "align": "center" },
-                                      { "type": "text", "text": "OnePriceOS", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "spacing": "sm",
-                                "contents": [
-                                  {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "backgroundColor": "#f59e0b",
-                                    "cornerRadius": "lg",
-                                    "paddingAll": "12px",
-                                    "action": { "type": "uri", "label": "SLA สลากฯ", "uri": toExternalUrl("https://www.appsheet.com/start/68fcb5f9-b795-4057-bc52-273a7dd863d0") },
-                                    "contents": [
-                                      { "type": "text", "text": "⏱️", "size": "lg", "align": "center" },
-                                      { "type": "text", "text": "SLA สลากฯ", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
-                                    ]
-                                  },
-                                  {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "backgroundColor": "#10b981",
-                                    "cornerRadius": "lg",
-                                    "paddingAll": "12px",
-                                    "action": { "type": "uri", "label": "เลือกตั้ง", "uri": toExternalUrl("https://kritsada-thp.github.io/ElectionTHP/") },
-                                    "contents": [
-                                      { "type": "text", "text": "🗳️", "size": "lg", "align": "center" },
-                                      { "type": "text", "text": "เลือกตั้ง THP", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
-                                    ]
-                                  }
-                                ]
-                              },
-
-                              /* Section 2: รายงานและบริการ */
-                              { "type": "text", "text": "📊 รายงานและสถิติ", "color": "#475569", "size": "xs", "weight": "bold", "margin": "md" },
+                              /* Section 1: รายงานและสถิติ (ขึ้นก่อน) */
+                              { "type": "text", "text": "📊 รายงานและสถิติ", "color": "#475569", "size": "xs", "weight": "bold", "margin": "xs" },
                               {
                                 "type": "box",
                                 "layout": "horizontal",
@@ -219,6 +154,71 @@
                                     "contents": [
                                       { "type": "text", "text": "📦", "size": "lg", "align": "center" },
                                       { "type": "text", "text": "Package A1-A12", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
+                                    ]
+                                  }
+                                ]
+                              },
+
+                              /* Section 2: ระบบงานปฏิบัติการ (ต่อท้าย) */
+                              { "type": "text", "text": "💻 ระบบงานปฏิบัติการ", "color": "#475569", "size": "xs", "weight": "bold", "margin": "md" },
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "backgroundColor": "#3b82f6",
+                                    "cornerRadius": "lg",
+                                    "paddingAll": "12px",
+                                    "action": { "type": "uri", "label": "AITHPREG03", "uri": toExternalUrl("https://yongyoot14032528-aicipreg03.hf.space") },
+                                    "contents": [
+                                      { "type": "text", "text": "🌐", "size": "lg", "align": "center" },
+                                      { "type": "text", "text": "AICIPREG03", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
+                                    ]
+                                  },
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "backgroundColor": "#4f46e5",
+                                    "cornerRadius": "lg",
+                                    "paddingAll": "12px",
+                                    "action": { "type": "uri", "label": "OnePriceOS", "uri": toExternalUrl("https://yongyoot14032528-onepriceos.hf.space") },
+                                    "contents": [
+                                      { "type": "text", "text": "📦", "size": "lg", "align": "center" },
+                                      { "type": "text", "text": "OnePriceOS", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "backgroundColor": "#f59e0b",
+                                    "cornerRadius": "lg",
+                                    "paddingAll": "12px",
+                                    "action": { "type": "uri", "label": "SLA สลากฯ", "uri": toExternalUrl("https://www.appsheet.com/start/68fcb5f9-b795-4057-bc52-273a7dd863d0") },
+                                    "contents": [
+                                      { "type": "text", "text": "⏱️", "size": "lg", "align": "center" },
+                                      { "type": "text", "text": "SLA สลากฯ", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
+                                    ]
+                                  },
+                                  {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "backgroundColor": "#10b981",
+                                    "cornerRadius": "lg",
+                                    "paddingAll": "12px",
+                                    "action": { "type": "uri", "label": "เลือกตั้ง", "uri": toExternalUrl("https://kritsada-thp.github.io/ElectionTHP/") },
+                                    "contents": [
+                                      { "type": "text", "text": "🗳️", "size": "lg", "align": "center" },
+                                      { "type": "text", "text": "เลือกตั้ง THP", "color": "#ffffff", "weight": "bold", "size": "xs", "align": "center", "margin": "xs" }
                                     ]
                                   }
                                 ]
