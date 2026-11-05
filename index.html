@@ -7,30 +7,8 @@
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Prompt', sans-serif; 
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-        }
-        .btn-share { 
-            background: linear-gradient(135deg, #06c755 0%, #05a847 100%); 
-            color: white; 
-            border: none; 
-            padding: 18px 30px; 
-            font-size: 20px; 
-            border-radius: 16px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            width: 85%; 
-            max-width: 400px; 
-            box-shadow: 0 10px 20px rgba(6, 199, 85, 0.3); 
-            display: none; 
-            transition: all 0.2s ease;
-        }
+        body { font-family: 'Prompt', sans-serif; background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .btn-share { background: linear-gradient(135deg, #06c755 0%, #05a847 100%); color: white; border: none; padding: 18px 30px; font-size: 20px; border-radius: 16px; cursor: pointer; font-weight: bold; width: 85%; max-width: 400px; display: none; transition: all 0.2s ease; }
         .btn-share:active { transform: scale(0.96); }
     </style>
 </head>
@@ -50,13 +28,12 @@
             } else {
                 liff.login();
             }
-        }).catch((err) => alert("ระบบขัดข้องตอนโหลด LIFF: " + JSON.stringify(err)));
+        }).catch((err) => {
+            alert("ระบบขัดข้อง: " + JSON.stringify(err));
+        });
 
         document.getElementById("btnShare").addEventListener("click", () => {
-            alert("1. รับทราบคำสั่ง! กำลังเช็กระบบ LINE...");
-            
             if (liff.isApiAvailable('shareTargetPicker')) {
-                alert("2. ระบบรองรับ! กำลังเตรียมเปิดหน้าต่างเลือกเพื่อน...");
                 liff.shareTargetPicker([
                     {
                         "type": "flex",
@@ -68,7 +45,7 @@
                             "type": "box",
                             "layout": "vertical",
                             "background": { "type": "linearGradient", "angle": "90deg", "startColor": "#0f172a", "endColor": "#1e293b" },
-                            "paddingAll": "20px",
+                            "paddingAll": "lg",
                             "contents": [
                               { "type": "box", "layout": "horizontal", "contents": [ { "type": "text", "text": "DATA DRIVEN CHANNEL", "color": "#38bdf8", "size": "xs", "weight": "bold" } ] },
                               { "type": "text", "text": "✨ Quick Link ปข.3", "color": "#ffffff", "size": "xl", "weight": "bold", "margin": "xs", "wrap": true },
@@ -79,24 +56,23 @@
                             "type": "box",
                             "layout": "vertical",
                             "spacing": "md",
-                            "paddingAll": "16px",
+                            "paddingAll": "md",
                             "backgroundColor": "#f8fafc",
                             "contents": [
                               {
                                 "type": "box",
                                 "layout": "vertical",
                                 "margin": "none",
-                                "paddingAll": "20px",
+                                "paddingAll": "lg",
                                 "cornerRadius": "xl",
                                 "background": { "type": "linearGradient", "angle": "45deg", "startColor": "#E11D48", "endColor": "#7C3AED" },
-                                "boxShadow": "0px 4px 10px rgba(0,0,0,0.1)",
                                 "action": { "type": "uri", "label": "Vote Premier League", "uri": toExternalUrl("https://monomax.tv/9_promptpost") },
                                 "contents": [
                                   { "type": "box", "layout": "baseline", "contents": [ { "type": "text", "text": "🔥 HOT CAMPAIGN", "color": "#FDE047", "weight": "bold", "size": "sm" } ] },
                                   { "type": "text", "text": "VOTE Cheer Team", "color": "#ffffff", "weight": "bold", "size": "xl", "margin": "md" },
                                   { "type": "text", "text": "Premier League 2026/27", "color": "#ffffff", "weight": "bold", "size": "md", "margin": "sm" },
                                   { "type": "text", "text": "ลุ้นรับโชคร่วมกับ MONOMAX & Prompt Post", "color": "#f1f5f9", "size": "xs", "margin": "md", "wrap": true },
-                                  { "type": "box", "layout": "vertical", "margin": "lg", "backgroundColor": "#ffffff", "cornerRadius": "md", "paddingAll": "10px", "contents": [ { "type": "text", "text": "คลิกเข้าร่วมกิจกรรม", "color": "#E11D48", "weight": "bold", "size": "sm", "align": "center" } ] }
+                                  { "type": "box", "layout": "vertical", "margin": "lg", "backgroundColor": "#ffffff", "cornerRadius": "md", "paddingAll": "sm", "contents": [ { "type": "text", "text": "คลิกเข้าร่วมกิจกรรม", "color": "#E11D48", "weight": "bold", "size": "sm", "align": "center" } ] }
                                 ]
                               },
                               { "type": "separator", "margin": "xl", "color": "#cbd5e1" },
@@ -111,7 +87,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "รายได้ ปข.3", "uri": toExternalUrl("https://datastudio.google.com/reporting/e8f27de9-2a6f-4826-968b-5832dd277446") },
@@ -122,7 +98,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "สื่อแคมเปญ", "uri": toExternalUrl("https://drive.google.com/drive/folders/1EJ-ytwrPYziR0O9JXWXU_GMqBaXRR5-c?usp=drive_link") },
@@ -140,7 +116,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "SLA สลากฯ", "uri": toExternalUrl("https://yongyoot1403-lotteryreg03.hf.space/") },
@@ -151,7 +127,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "Package", "uri": toExternalUrl("https://docs.google.com/spreadsheets/d/1sLu2_oVzRG1HaQ-CqXWkLRz82lpxHT_K3WAStyNzXms/htmlview#gid=0") },
@@ -170,7 +146,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "AITHPREG03", "uri": toExternalUrl("https://yongyoot14032528-aicipreg03.hf.space") },
@@ -181,7 +157,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "เลือกตั้งท้องถิ่น", "uri": toExternalUrl("https://kritsada-thp.github.io/ElectionTHP/") },
@@ -199,7 +175,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "ส่งต่างประเทศ", "uri": toExternalUrl("https://script.google.com/macros/s/AKfycbxEyKRGW99ppQRgL_tmPoWQ1JvocnLnduioD177VIN9x_gvLuN-Q1Qe7yDXXT3EAws/exec") },
@@ -210,7 +186,7 @@
                                     "layout": "vertical",
                                     "backgroundColor": "#ffffff",
                                     "cornerRadius": "lg",
-                                    "paddingAll": "16px",
+                                    "paddingAll": "md",
                                     "borderWidth": "1px",
                                     "borderColor": "#e2e8f0",
                                     "action": { "type": "uri", "label": "PF&Tracking", "uri": toExternalUrl("https://page.line.me/670tpafc") },
@@ -223,12 +199,14 @@
                         }
                     }
                 ]).then((res) => {
-                    if (res) { liff.closeWindow(); }
+                    if (res) {
+                        liff.closeWindow(); 
+                    }
                 }).catch((err) => {
-                    alert("เกิดข้อผิดพลาดในการแชร์: " + JSON.stringify(err));
+                    alert("แชร์ไม่สำเร็จ: " + err.message);
                 });
             } else {
-                alert("❌ ระบบ Share Target Picker ไม่พร้อมทำงาน: คุณยังไม่ได้เปิดสิทธิ์ (Scopes) หรือแอป LINE ค้างครับ");
+                alert("กรุณาเปิดลิงก์นี้ในแอปพลิเคชัน LINE ครับ");
             }
         });
     </script>
