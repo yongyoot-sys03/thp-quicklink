@@ -58,14 +58,13 @@
                                 "paddingAll": "md",
                                 "backgroundColor": "#f8fafc",
                                 "contents": [
-                                    /* --- MONOMAX CAMPAIGN --- */
+                                    /* --- MONOMAX CAMPAIGN (3 ปุ่มเรียงแนวนอน) --- */
                                     {
                                         "type": "box",
                                         "layout": "vertical",
                                         "paddingAll": "lg",
                                         "cornerRadius": "xl",
                                         "backgroundColor": "#E11D48",
-                                        "action": { "type": "uri", "label": "Vote Premier League", "uri": toExternalUrl("https://monomax.tv/9_promptpost") },
                                         "contents": [
                                             { "type": "text", "text": "🔥 MONOMAX", "color": "#FDE047", "weight": "bold", "size": "sm" },
                                             {
@@ -82,13 +81,49 @@
                                             { "type": "text", "text": "ลุ้นรับโชคร่วมกับ MONOMAX & Prompt Post", "color": "#f1f5f9", "size": "xs", "margin": "md", "wrap": true },
                                             {
                                                 "type": "box",
-                                                "layout": "vertical",
+                                                "layout": "horizontal",
                                                 "margin": "lg",
-                                                "backgroundColor": "#ffffff",
-                                                "cornerRadius": "md",
-                                                "paddingAll": "sm",
+                                                "spacing": "sm",
                                                 "contents": [
-                                                    { "type": "text", "text": "👉 คลิกเข้าร่วมกิจกรรม ", "color": "#E11D48", "weight": "bold", "size": "sm", "align": "center" }
+                                                    {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "flex": 1,
+                                                        "backgroundColor": "#ffffff",
+                                                        "cornerRadius": "md",
+                                                        "paddingAll": "sm",
+                                                        "justifyContent": "center",
+                                                        "action": { "type": "uri", "label": "เข้าร่วมกิจกรรม", "uri": toExternalUrl("https://monomax.tv/9_promptpost") },
+                                                        "contents": [
+                                                            { "type": "text", "text": "👉 คลิกเข้าร่วมกิจกรรม", "color": "#E11D48", "weight": "bold", "size": "xxs", "align": "center", "wrap": true }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "flex": 1,
+                                                        "backgroundColor": "#ffffff",
+                                                        "cornerRadius": "md",
+                                                        "paddingAll": "sm",
+                                                        "justifyContent": "center",
+                                                        "action": { "type": "uri", "label": "ภาพรวม ปณท", "uri": toExternalUrl("https://datastudio.google.com/reporting/cdae2815-fea0-4322-ba97-cd8fc7e19de0/page/p_znpvq04y8d") },
+                                                        "contents": [
+                                                            { "type": "text", "text": "ภาพรวม ปณท (เฉพาะ Prompt Post)", "color": "#E11D48", "weight": "bold", "size": "xxs", "align": "center", "wrap": true }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "flex": 1,
+                                                        "backgroundColor": "#ffffff",
+                                                        "cornerRadius": "md",
+                                                        "paddingAll": "sm",
+                                                        "justifyContent": "center",
+                                                        "action": { "type": "uri", "label": "Dashboard ปข.3", "uri": toExternalUrl("https://yongyoot-sys03.github.io/monomax-dashboard/") },
+                                                        "contents": [
+                                                            { "type": "text", "text": "Dashboard ปข.3 (OFF/ON)", "color": "#E11D48", "weight": "bold", "size": "xxs", "align": "center", "wrap": true }
+                                                        ]
+                                                    }
                                                 ]
                                             }
                                         ]
